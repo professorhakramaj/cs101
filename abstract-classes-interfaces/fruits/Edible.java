@@ -1,3 +1,3 @@
 public interface Edible {
-    public int eat();
+    public void eat();
 }

@@ -1,8 +1,13 @@
 public class Car extends Vehicle{
     private String routeTaken;
 
-    public Car(double mph, String routeTaken){
-            super(mph, 0);
+    public Car(double mph, double destination){
+        super(mph, destination);
+        this.routeTaken = "";
+    }
+
+    public Car(double mph, double destination, String routeTaken){
+            super(mph, destination);
             this.routeTaken = routeTaken;
     }
 
@@ -12,17 +17,17 @@ public class Car extends Vehicle{
             case "B": return 11;
             case "C": return 7;
             case "D": return 5;
-            default: return 0;
         }
+        return 0;
     }
 
     @Override
-    public double calculateTimeToDestination(double miles){
-            return (miles / this.mph) * 60 + this.getTotalDelayTime();
+    public double calculateTimeToDestination(){
+            return (this.destination / this.mph) * 60 + this.getTotalDelayTime();
     }
 
     @Override
     public String toString(){
-        return "Using route " + this.routeTaken + " will take you " + this.calculateTimeToDestination(this.getDestinationMiles()) + " minutes while driving.";
+        return "Using route " + this.routeTaken + " will take you " + this.calculateTimeToDestination() + " minutes while driving.";
     }
 }
